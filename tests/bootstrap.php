@@ -1,0 +1,17 @@
+<?php
+
+//require __DIR__ . '/Wee/TestCase.php';
+
+spl_autoload_register(function($class)
+    {
+        $file = __DIR__ . '/../src/' . strtr($class, '\\', '/') . '.php';
+        if (file_exists($file)) {
+            require $file;
+            return true;
+        }
+        $file = __DIR__ . '/../../wee/src/' . strtr($class, '\\', '/') . '.php';
+        if (file_exists($file)) {
+            require $file;
+            return true;
+        }    }
+);
