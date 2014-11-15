@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @author miaokuan
+ */
+
+include __DIR__ . '/simdp.php';
+
