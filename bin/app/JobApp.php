@@ -27,7 +27,7 @@ class JobApp extends App
 
         $data = [
             'errno' => $errno,
-            'id' => $id,
+            'job_id' => $id,
         ];
         $this->json($data);
     }
@@ -38,7 +38,7 @@ class JobApp extends App
     public function delAction()
     {
         $oJob = new Job();
-        $id = $this->params['id'];
+        $id = $this->params['job_id'];
         $ret = $oJob->del($id);
 
         $errno = $ret ? 0 : 1;
