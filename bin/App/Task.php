@@ -3,11 +3,13 @@
  * @author miaokuan
  */
 
+namespace App;
+
 use Dp\Task;
 use Dp\Job;
 use Sim\Log;
 
-class TaskApp extends App
+class Task extends App
 {
     /**
      * daemon:dispatch ready tasks

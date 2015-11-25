@@ -3,6 +3,8 @@
  * @author miaokuan
  */
 
+namespace App;
+
 use Sim\Widget;
 
 abstract class App extends Widget

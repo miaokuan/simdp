@@ -3,9 +3,11 @@
  * @author miaokuan
  */
 
+namespace App;
+
 use Dp\Job;
 
-class JobApp extends App
+class Job extends App
 {
 
     /**

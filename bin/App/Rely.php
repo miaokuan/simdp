@@ -3,12 +3,14 @@
  * @author miaokuan
  */
 
+namespace App;
+
 use Dp\Task;
 use Dp\Job;
 use Dp\Rely;
 use Sim\Log;
 
-class RelyApp extends App
+class Rely extends App
 {
     /**
      * daemon: rely check

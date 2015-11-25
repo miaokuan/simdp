@@ -3,7 +3,9 @@
  * @author miaokuan
  */
 
-class DemoApp extends App
+namespace App;
+
+class Demo extends App
 {
     public function runAction(&$log)
     {
