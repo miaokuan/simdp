@@ -10,7 +10,7 @@ if (substr(php_sapi_name(), 0, 3) !== 'cli') {
 error_reporting(E_ALL & ~E_NOTICE);
 define('SIM_ROOT', dirname(__DIR__));
 chdir(SIM_ROOT);
-set_include_path('.:' . SIM_ROOT . '/src:' . __DIR__ . '/app');
+set_include_path(__DIR__ . ':' . SIM_ROOT . '/src');
 
 require 'Sim/Common.php';
 $config = array();
