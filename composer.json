@@ -20,8 +20,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Sim\\": "src/Sim"
-            "Dp\\": "src/Dp"
+            "Sim\\": "src/Sim",
+            "Dp\\": "src/Dp",
             "App\\": "bin/App"
         }
     },
