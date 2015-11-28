@@ -3,6 +3,7 @@
  * @author miaokuan
  */
 
+
 namespace Sim;
 
 use Sim\Log;
@@ -57,12 +58,12 @@ class Run
         Log::level(Log::INFO);
 
         //process exists
-        // $pid_files = glob(SIM_ROOT . '/var/pid/' . $this->app . "*.pid");
-        // if (is_array($pid_files) && (count($pid_files) >= $this->max)) {
-        //     $text = "pid file(" . $pid_files[0] . ") existed.";
-        //     Log::fatal($text);
-        //     exit;
-        // }
+        $pid_files = glob(SIM_ROOT . '/var/pid/' . $this->app . "*.pid");
+        if (is_array($pid_files) && (count($pid_files) >= $this->max)) {
+            $text = "pid file(" . $pid_files[0] . ") existed.";
+            Log::fatal($text);
+            exit;
+        }
 
         //pid
         $pid_file = SIM_ROOT . '/var/pid/' . $this->app . '_' . $this->mypid . '.pid';
@@ -81,21 +82,21 @@ class Run
         $action = $this->action . 'Action';
         Log::info("Begin to execute. [app:$app action:$action pid:$pid]");
 
-        $classname = $this->formatApp($app);
-        if (!class_exists($classname)) {
-            Log::fatal("Failed to find class:$classgname");
+        $class = $this->format($app);
+        if (!class_exists($class)) {
+            Log::fatal("Failed to find class:$class");
             return;
         }
 
-        $class = new $classname($this->params);
-        if (!method_exists($class, $action)) {
+        $obj = new $class($this->params);
+        if (!method_exists($obj, $action)) {
             Log::fatal("Failed to find method:$action");
             return;
         }
 
         Log::info("Calling method[$action] for $app.");
         $log = array();
-        $result = $class->$action($log);
+        $result = $obj->$action($log);
 
         //log
         if (!empty($log)) {
@@ -143,15 +144,15 @@ class Run
         }
     }
 
-    protected function formatApp($app)
+    protected function format($app)
     {
         $arr = explode('.', $app);
         foreach ($arr as $key => $word) {
             $word = ucfirst(strtolower($word));
             $arr[$key] = $word;
         }
-        $classname = implode('_', $arr) . 'App';
-        return $classname;
+        $class = '\\App\\' . implode('\\', $arr);
+        return $class;
     }
 
 }
