@@ -20,7 +20,9 @@
     },
     "autoload": {
         "psr-4": {
-            "Simdp\\": "src/Simdp"
+            "Sim\\": "src/Sim"
+            "Dp\\": "src/Dp"
+            "App\\": "bin/App"
         }
     },
     "bin": ["bin/simdp", "bin/simdp.php"]
